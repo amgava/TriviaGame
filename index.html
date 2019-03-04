@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Trivia!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+</head>
+
+<body>
+
+    <!--Game-->
+    <div class="container" id="game">
+
+        <!--Header-->
+        <div class="row" id="header">
+            <h1>Trivia! Test Your Pop Culture IQ!</h1>
+        </div>
+
+        <!--Timer-->
+        <div class="row" id="timeLeft">
+            <p>Time Remaining: <span id="countdown"></span> seconds</p>
+        </div>
+
+        <!--Questions-->
+        <div class="row" id="question-1">
+            <p class="question">
+                *Insert Question*
+            </p>
+            
+        </div>
+
+        <!--Results-->
+        <div class="container" id="gameOver">
+            <h2>Time's Up!</h2>
+        </div>
+
+    </div>
+
+    <!--Game Script-->
+    <script src="./assets/javascript/app.js"></script>
+
+</body>
+
+</html>
