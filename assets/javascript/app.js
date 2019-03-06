@@ -1,5 +1,5 @@
-$(window).load(function () {
-    $("#button").on("click", countdown.start);
+$(window).on('load', function () {
+    // $("#button").on("click", countdown.start);
 
 });
 
@@ -50,8 +50,7 @@ var questions = {
     q8: {
         q: "What two countries tied for the most gold medals won at the 2018 Winter Olympics?",
         a: ["Germany and Norway", "Germany and Canada", "Germany and Sweden", "Germany and United States"],
-        answer: "Germany and Norway",
-        atest: this.a[0]
+        answer: "Germany and Norway"
     }
 };
 
@@ -76,9 +75,6 @@ function decrement() {
 
 
 
-
 function gameOver() {
     $("#game").html("<h2>Time 's Up!</h2>");
 }
-
-gameOver();
