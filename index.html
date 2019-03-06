@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Trivia!</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
@@ -20,14 +20,20 @@
             <h1>Trivia! Test Your Pop Culture IQ!</h1>
         </div>
 
+        <!--Start Game-->
+        <button id="start">Click Here To Start!</button>
+
         <!--Timer-->
-        <div class="row" id="timeLeft">
+        <!-- <div class="row" id="timeLeft">
             <p>Time Remaining: <span id="countdown"></span> seconds</p>
-        </div>
+        </div> -->
+
+        <!--Timer V2-->
+        <div class="row" id="countdown"></div>
 
         <!--Questions-->
         <div class="row" name="question" id="q-1"></div>
-        <div class="row" class="answers" id= "a-1">
+        <div class="row" class="answers" id="a-1">
             <input type="radio" id="q-1-a" value="">
             <input type="radio" id="q-1-b" value="">
             <input type="radio" id="q-1-c" value="">
@@ -35,7 +41,7 @@
         </div>
 
         <div class="row" name="question" id="q-2"></div>
-        <div class="row" class="answers" id= "a-2">
+        <div class="row" class="answers" id="a-2">
             <input type="radio" id="q-2-a" value="">
             <input type="radio" id="q-2-b" value="">
             <input type="radio" id="q-2-c" value="">
@@ -43,7 +49,7 @@
         </div>
 
         <div class="row" name="question" id="q-3"></div>
-        <div class="row" class="answers" id= "a-3">
+        <div class="row" class="answers" id="a-3">
             <input type="radio" id="q-3-a" value="">
             <input type="radio" id="q-3-b" value="">
             <input type="radio" id="q-3-c" value="">
@@ -51,7 +57,7 @@
         </div>
 
         <div class="row" name="question" id="q-4"></div>
-        <div class="row" class="answers" id= "a-4">
+        <div class="row" class="answers" id="a-4">
             <input type="radio" id="q-4-a" value="">
             <input type="radio" id="q-4-b" value="">
             <input type="radio" id="q-4-c" value="">
@@ -59,7 +65,7 @@
         </div>
 
         <div class="row" name="question" id="q-5"></div>
-        <div class="row" class="answers" id= "a-5">
+        <div class="row" class="answers" id="a-5">
             <input type="radio" id="q-5-a" value="">
             <input type="radio" id="q-5-b" value="">
             <input type="radio" id="q-5-c" value="">
@@ -67,7 +73,7 @@
         </div>
 
         <div class="row" name="question" id="q-6"></div>
-        <div class="row" class="answers" id= "a-6">
+        <div class="row" class="answers" id="a-6">
             <input type="radio" id="q-6-a" value="">
             <input type="radio" id="q-6-b" value="">
             <input type="radio" id="q-6-c" value="">
@@ -75,7 +81,7 @@
         </div>
 
         <div class="row" name="question" id="q-7"></div>
-        <div class="row" class="answers" id= "a-7">
+        <div class="row" class="answers" id="a-7">
             <input type="radio" id="q-7-a" value="">
             <input type="radio" id="q-7-b" value="">
             <input type="radio" id="q-7-c" value="">
@@ -83,16 +89,11 @@
         </div>
 
         <div class="row" name="question" id="q-8"></div>
-        <div class="row" class="answers" id= "a-8">
+        <div class="row" class="answers" id="a-8">
             <input type="radio" id="q-8-a" value="">
             <input type="radio" id="q-8-b" value="">
             <input type="radio" id="q-8-c" value="">
             <input type="radio" id="q-8-d" value="">
-        </div>
-
-        <!--Results-->
-        <div class="container" id="gameOver">
-            <h2>Time's Up!</h2>
         </div>
 
     </div>
