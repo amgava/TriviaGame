@@ -9,7 +9,7 @@ $(window).on( "load" , function () {
 
 $( "#start" ).click(function () {
     $( this ).hide();
-    $("#timeLeft").html( "<p>Time Remaining: " + time + " seconds</p>" );
+    $( "#timeLeft" ).html( "<p>Time Remaining: " + time + " seconds</p>" );
     go();
 });
  
@@ -70,9 +70,12 @@ var countdown;
  
 function decrement() {
     time--;
-    $("#timeLeft").html( "<p>Time Remaining: " + time + " seconds</p>" );
+    $( "#timeLeft" ).html( "<p>Time Remaining: " + time + " seconds</p>" );
  
     if (number === 0) {
+        
+        stop();
+        
         gameOver();
     }
 }
@@ -83,6 +86,10 @@ function go() {
 }
  
 function gameOver() {
-    clearInterval(countdown);
     $( "#game" ).html( "<h2>Time's Up!</h2>" );
+}
+
+function stop() {
+
+    clearInterval(countdown);
 }
