@@ -1,104 +1,51 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8" />
-    <title>Trivia!</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <title>Trivia!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    </head>
 
-<body>
+    <body>
 
-    <!--Game-->
-    <div class="container" id="game">
+        <!--Game-->
+        <div class="bg-image">
 
-        <!--Header-->
-        <div class="row" id="header">
-            <h1>Trivia! Test Your Pop Culture IQ!</h1>
+            <div class="container-fluid" id=" game">
+
+                <!--Header-->
+                <div class="row" id="top">
+                    <h1>Trivia! Test Your Pop Culture IQ!</h1>
+                </div>
+
+                <!--Start Game-->
+                <div id="bt"><button id="start">Click To Play!</button></div>
+
+                <!--Timer-->
+                <div class="row cl" id="timeLeft"></div>
+
+                <!--Questions & Answers-->
+                <form class="cl" id="quiz-box"></form>
+
+                <!-- Results(hidden until game end) -->
+                <div class="row d-none result" id="right"></div>
+                <div class="row d-none result" id="wrong"></div>
+                <div class="row d-none result" id="unanswered"></div>
+
+            </div>
+
         </div>
 
-        <!--Start Game-->
-        <button id="start">Click Here To Start!</button>
+        <!--jQuery Reference-->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-        <!--Timer-->
-        <div class="row" id="timeLeft"></div>
+        <!--Game Script-->
+        <script src="./assets/javascript/app.js"></script>
 
-        <!--Questions-->
-        <div class="row" name="question" id="q-1"></div>
-        <div class="row" class="answers" id="a-1">
-            <label><input type="radio" id="q-1-a" value=""></label>
-            <label><input type="radio" id="q-1-b" value=""></label>
-            <label><input type="radio" id="q-1-c" value=""></label>
-            <label><input type="radio" id="q-1-d" value=""></label>
-        </div>
-
-        <div class="row" name="question" id="q-2"></div>
-        <div class="row" class="answers" id="a-2">
-            <label><input type="radio" id="q-2-a" value=""></label>
-            <label><input type="radio" id="q-2-b" value=""></label>
-            <label><input type="radio" id="q-2-c" value=""></label>
-            <label><input type="radio" id="q-2-d" value=""></label>
-        </div>
-
-        <div class="row" name="question" id="q-3"></div>
-        <div class="row" class="answers" id="a-3">
-            <label><input type="radio" id="q-3-a" value=""></label>
-            <label><input type="radio" id="q-3-b" value=""></label>
-            <label><input type="radio" id="q-3-c" value=""></label>
-            <label><input type="radio" id="q-3-d" value=""></label>
-        </div>
-
-        <div class="row" name="question" id="q-4"></div>
-        <div class="row" class="answers" id="a-4">
-            <label><input type="radio" id="q-4-a" value=""></label>
-            <label><input type="radio" id="q-4-b" value=""></label>
-            <label><input type="radio" id="q-4-c" value=""></label>
-            <label><input type="radio" id="q-4-d" value=""></label>
-        </div>
-
-        <div class="row" name="question" id="q-5"></div>
-        <div class="row" class="answers" id="a-5">
-            <label><input type="radio" id="q-5-a" value=""></label>
-            <label><input type="radio" id="q-5-b" value=""></label>
-            <label><input type="radio" id="q-5-c" value=""></label>
-            <label><input type="radio" id="q-5-d" value=""></label>
-        </div>
-
-        <div class="row" name="question" id="q-6"></div>
-        <div class="row" class="answers" id="a-6">
-            <label><input type="radio" id="q-6-a" value=""></label>
-            <label><input type="radio" id="q-6-b" value=""></label>
-            <label><input type="radio" id="q-6-c" value=""></label>
-            <label><input type="radio" id="q-6-d" value=""></label>
-        </div>
-
-        <div class="row" name="question" id="q-7"></div>
-        <div class="row" class="answers" id="a-7">
-            <label><input type="radio" id="q-7-a" value=""></label>
-            <label><input type="radio" id="q-7-b" value=""></label>
-            <label><input type="radio" id="q-7-c" value=""></label>
-            <label><input type="radio" id="q-7-d" value=""></label>
-        </div>
-
-        <div class="row" name="question" id="q-8"></div>
-        <div class="row" class="answers" id="a-8">
-            <label><input type="radio" id="q-8-a" value=""></label>
-            <label><input type="radio" id="q-8-b" value=""></label>
-            <label><input type="radio" id="q-8-c" value=""></label>
-            <label><input type="radio" id="q-8-d" value=""></label>
-        </div>
-
-    </div>
-
-    <!--jQuery Reference-->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-    <!--Game Script-->
-    <script src="./assets/javascript/app.js"></script>
-
-</body>
+    </body>
 
 </html>

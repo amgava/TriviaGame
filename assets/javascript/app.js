@@ -1,88 +1,169 @@
-$(window).on( "load" , function () {
-    $( "#q-1" ).html(questions.q1.q);
-    $("#q-1-a").attr("value", questions.q1.a[0]);
-    // var len = questions.q1.a.length;
-    // for (var i = 0; i < len; i++) {
-    //     $("#q-1-a").html(questions.q1.a[i]);
-    // }
+$(document).ready(function () {
+    $("#start").on("click", start);
 });
 
-$( "#start" ).click(function () {
-    $( this ).hide();
-    $("#timeLeft").html( "<p>Time Remaining: " + time + " seconds</p>" );
-    go();
-});
- 
-var questions = {
- 
-    q1: {
+var choice;
+var right = 0;
+var wrong = 0;
+var unanswered = 0;
+var intervalId;
+var time = 30;
+
+var quiz = {
+
+    displayQuestions: function () {
+        var box = $("#quiz-box");
+
+        for (var i = 0; i < questions.length; i++) {
+
+            box.append('<fieldset class="form-group cl" id="question' + i + '"><legend>' + questions[i].q + '</legend></fieldset>');
+        }
+
+    },
+
+    displayAnswers: function () {
+
+        for (var i = 0; i < questions.length; i++) {
+
+            var arow = $('fieldset[id=question' + i + ']');
+            var a1 = questions[i].a[0];
+            var a2 = questions[i].a[1];
+            var a3 = questions[i].a[2];
+            var a4 = questions[i].a[3];
+
+            arow.append('<div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="answer'
+            +i + '" id="choice'
+            +0 + '" value="' + a1 + '"><label class="form-check-label" for="choice'
+            +0 + '">' + a1 + '</label></div>');
+
+            arow.append('<div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="answer'
+            +i + '" id="choice'
+            +1 + '" value="' + a2 + '"><label class="form-check-label" for="choice'
+            +1 + '">' + a2 + '</label></div>');
+
+            arow.append('<div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="answer'
+            +i + '" id="choice'
+            +2 + '" value="' + a3 + '"><label class="form-check-label" for="choice'
+            +2 + '">' + a3 + '</label></div>');
+
+            arow.append('<div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="answer'
+            +i + '" id="choice'
+            +3 + '" value="' + a4 + '"><label class="form-check-label" for="choice'
+            +3 + '">' + a4 + '</label></div>');
+
+        }
+    },
+
+    check: function () {
+
+        for (var i = 0; i < questions.length; i++) {
+            var qright = questions[i].correct;
+            choice = $('input[type=radio][name=answer'+i+']:checked').val();
+
+            if (choice === qright) {
+                right++;
+            } else if (choice === undefined) {
+                unanswered++;
+            } else if (choice !== qright) {
+                wrong++;
+            }
+        }
+    },
+
+    finished: function (right, wrong, unanswered) {
+        $(".cl").empty();
+        $("#timeLeft").addClass('d-none');
+        $(".result").removeClass('d-none');
+        if (right == 1) {
+           $("#right").html("<p>You got " + right + " question right! Not your best subject, eh?</p>");
+        } else {
+            $("#right").html("<p>You got " + right + " questions right! Good Job!</p>");
+        }
+        if (wrong == 1) {
+            $("#wrong").html("<p>You got " + wrong + " question wrong! Aww. So close.</p>");
+        } else {
+            $("#wrong").html("<p>You got " + wrong + " questions wrong! Whoops.</p>");
+        }
+        if (unanswered == 1) {
+            $("#unanswered").html("<p>You missed " + unanswered + " question. You should've guessed!</p>");
+        } else {
+            $("#unanswered").html("<p>You missed " + unanswered + " questions. Yikes.</p>");
+        }
+    }
+}
+
+var questions = [
+
+    {
         q: "1. Whose 2013 world tour was called ‘The Mrs Carter Show’?",
         a: ["Peggy Carter", "Beyonce", "Lynda Carter", "P!nk"],
-        answer: "Beyonce"
+        correct: "Beyonce"
     },
- 
-    q2: {
+
+    {
         q: "2. Who was the first on-screen James Bond?",
         a: ["Sean Connery", "Pierce Brosnan", "Barry Nelson", "Idris Elba"],
-        answer: "Barry Nelson"
+        correct: "Barry Nelson"
     },
- 
-    q3: {
+
+    {
         q: "3. What is the better known stage name of Robyn Fenty?",
         a: ["Robyn", "Bjork", "Madonna", "Rihanna"],
-        answer: "Rihanna"
+        correct: "Rihanna"
     },
- 
-    q4: {
+
+    {
         q: "4. Which of these is NOT a Pixar film?",
         a: ["Toy Story", "Shrek", "Finding Nemo", "Cars"],
-        answer: "Shrek"
+        correct: "Shrek"
     },
- 
-    q5: {
-        q: "5. How old was Harry Potter in the first book of the same name?",
+
+    {
+        q: "5. How old was Harry Potter in the first book of the series?",
         a: ["13", "14", "11", "12"],
-        answer: "11"
+        correct: "11"
     },
- 
-    q6: {
+
+    {
         q: "6. Which film is the heroine 'Satine' from?",
         a: ["Chicago", "Moulin Rouge", "Rent", "Les Miserables"],
-        answer: "Moulin Rouge"
+        correct: "Moulin Rouge"
     },
- 
-    q7: {
+
+    {
         q: "7. Who plays the role of Lara Croft in the 2018 American action-adventure film, 'Tomb Raider'? ",
-        a: ["Margot Robbie", "Alicia Vikander", "Angelina Jolie", "Brie Larson"],
-        answer: "Alicia Vikander"
+        a: ["Margot Robbie", "Brie Larson", "Angelina Jolie", "Alicia Vikander"],
+        correct: "Alicia Vikander"
     },
- 
-    q8: {
+
+    {
         q: "8. What two countries tied for the most gold medals won at the 2018 Winter Olympics?",
         a: ["Germany and Norway", "Germany and Canada", "Germany and Sweden", "Germany and United States"],
-        answer: "Germany and Norway"
+        correct: "Germany and Norway"
     }
-};
- 
-var time = 30;
- 
-var countdown;
- 
-function decrement() {
+]
+
+function start() {
+    $("#start").hide();
+    $("#timeLeft").html("<p>Time Remaining: " + time + " seconds</p>");
+    clearInterval(intervalId);
+    intervalId = setInterval(countdown, 1000);
+    quiz.displayQuestions();
+    quiz.displayAnswers();
+}
+
+function countdown() {
+
     time--;
-    $("#timeLeft").html( "<p>Time Remaining: " + time + " seconds</p>" );
- 
-    if (number === 0) {
-        gameOver();
+    $("#timeLeft").html("<p>Time Remaining: " + time + " seconds</p>");
+    if (time === 0) {
+        stop(intervalId);
     }
 }
- 
-function go() {
-    clearInterval(countdown);
-    countdown = setInterval(decrement, 1000);
-}
- 
-function gameOver() {
-    clearInterval(countdown);
-    $( "#game" ).html( "<h2>Time's Up!</h2>" );
+
+function stop() {
+    clearInterval(intervalId);
+    $("#timeLeft").html("<p>Time Remaining: " + 0 + " seconds</p>");
+    quiz.check();
+    quiz.finished(right, wrong, unanswered);
 }

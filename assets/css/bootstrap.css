@@ -222,7 +222,8 @@ th {
 }
 
 label {
-  display: inline-block;
+  display: block;
+  padding: 1rem;
   margin-bottom: 0.5rem;
 }
 
